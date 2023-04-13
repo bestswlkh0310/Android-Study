@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.menu_home -> {
                     Log.d(TAG, "MainActivity - 홈")
-                    homeFragment = HomeFragment.newInstance()
+                    homeFragment = HomeFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, homeFragment).commit()
                 }
                 R.id.menu_ranking -> {
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        homeFragment = HomeFragment.newInstance()
+        homeFragment = HomeFragment()
         supportFragmentManager.beginTransaction().add(R.id.fragments_frame, homeFragment).commit()
     }
 }

@@ -1,30 +1,22 @@
 package com.example.apipractice.retrofit
 
+import android.util.Log
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitClient {
-    private var instance: RetrofitClient? = null
-    private var retrofitInterface: RetrofitInterface? = null
-    private const val baseUrl = "http://www.kobis.or.kr"
+class RetrofitClient {
+    private var retrofitClient: Retrofit? = null
+    val TAG: String = "로그"
 
-    init {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        retrofitInterface = retrofit.create(RetrofitInterface::class.java)
-    }
-
-    @Synchronized
-    fun getInstance(): RetrofitClient {
-        if (instance == null) {
-            instance = RetrofitClient
+    fun getClient(baseUrl: String): Retrofit {
+        Log.d(TAG, "$baseUrl - getClient() called")
+        // retrofitClient가 없으면 생성
+        if (retrofitClient == null) {
+            retrofitClient = Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
         }
-        return instance!!
-    }
-
-    fun getRetrofitInterface(): RetrofitInterface {
-        return retrofitInterface!!
+        return retrofitClient!!
     }
 }

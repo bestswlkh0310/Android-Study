@@ -1,6 +1,6 @@
 package com.example.apipractice.retrofit
 
-import com.example.apipractice.API
+import com.example.apipractice.utils.API
 import com.example.apipractice.movieApi.Result
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -11,10 +11,6 @@ import androidx.fragment.app.Fragment
 class HomeFragment: Fragment() {
     companion object {
         const val TAG: String = "로그"
-
-        fun newInstance(): HomeFragment {
-            return HomeFragment()
-        }
     }
     
     override fun onCreate(savedInstanceState: Bundle?) {
