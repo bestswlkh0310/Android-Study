@@ -11,36 +11,35 @@ import android.util.Log
 
 class MyService : Service() {
     lateinit var player: MediaPlayer
-    val TAG: String = "로그"
+    companion object {
+        const val TAG: String = "로그"
+    }
 
-    var receiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            Log.d(TAG, "MyService - onReceive() called")
-            val mode = intent?.getStringExtra("mode")
-            if(mode != null){
-                if(mode == "start"){
-                    try{
-                        if(player.isPlaying){
-                            Log.d(TAG, "MyService - onReceive() called")
-                            player.stop()
-                            player.release()
-                        }
-                        player = MediaPlayer.create(context, R.raw.music)
-                        player.start()
-                    }catch (e: Exception){
-                        e.printStackTrace()
+    private lateinit var receiver: BroadcastReceiver
+
+    override fun onCreate() {
+        super.onCreate()
+
+        receiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                Log.d(TAG, "MyService - onReceive() called")
+                val mode =  intent?.extras?.getString("mode")
+                if (mode == "start") {
+                    if (player.isPlaying) {
+                        Log.d(TAG, "MyService - onReceive() called")
+                        player.stop()
+                        player.release()
                     }
-                }else if(mode == "stop"){
-                    if(player.isPlaying){
+                    player = MediaPlayer.create(context, R.raw.music)
+                    player.start()
+                } else if(mode == "stop") {
+                    if (player.isPlaying) {
                         player.stop()
                     }
                 }
             }
         }
-    }
 
-    override fun onCreate() {
-        super.onCreate()
         player = MediaPlayer()
         registerReceiver(receiver, IntentFilter("PLAY_TO_SERVICE"))
     }
@@ -50,7 +49,7 @@ class MyService : Service() {
         unregisterReceiver(receiver)
     }
 
-    override fun onBind(intent: Intent): IBinder {
-        TODO("Return the communication channel to the service.")
+    override fun onBind(intent: Intent): IBinder? {
+        return null
     }
 }

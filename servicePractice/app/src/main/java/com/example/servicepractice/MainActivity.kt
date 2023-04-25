@@ -13,29 +13,38 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.startButton.setOnClickListener {
-            Log.d(TAG, "MainActivity - onCreate() called")
-            val intent = Intent("PLAY_TO_SERVICE")
-            intent.putExtra("mode", "start")
-            sendBroadcast(intent)
+        // service
+        startService(Intent(this, MyService::class.java))
 
-            binding.startButton.isEnabled = false
-            binding.stopButton.isEnabled = true
-        }
+        binding.startButton.setOnClickListener { onClickStart() }
+        binding.stopButton.setOnClickListener { onClickStop() }
+    }
 
-        binding.stopButton.setOnClickListener {
-            val intent = Intent("PLAY_TO_SERVICE")
-            intent.putExtra("mode", "stop")
-            sendBroadcast(intent)
+    private fun onClickStart() {
+        // view
+        binding.startButton.isEnabled = false
+        binding.stopButton.isEnabled = true
 
-            binding.startButton.isEnabled = true
-            binding.stopButton.isEnabled = false
-        }
+        Log.d(TAG, "MainActivity - onClickStart() called")
+        val intent = Intent("PLAY_TO_SERVICE")
+        intent.putExtra("mode", "start")
+        sendBroadcast(intent)
+    }
 
+    private fun onClickStop() {
+        // view
+        binding.startButton.isEnabled = true
+        binding.stopButton.isEnabled = false
+
+        val intent = Intent("PLAY_TO_SERVICE")
+        intent.putExtra("mode", "stop")
+        sendBroadcast(intent)
+        // service
         startService(Intent(this, MyService::class.java))
     }
 
     override fun onDestroy() {
+        // destroy service
         stopService(Intent(this, MyService::class.java))
         super.onDestroy()
     }
