@@ -17,7 +17,6 @@ class ProfileAdapter(private val profileList: ArrayList<Profiles>) : RecyclerVie
                 val curPos: Int = absoluteAdapterPosition
                 val profile: Profiles = profileList[curPos]
                 Toast.makeText(parent.context, "${profile.age}", Toast.LENGTH_LONG).show()
-
             }
         }
     }
