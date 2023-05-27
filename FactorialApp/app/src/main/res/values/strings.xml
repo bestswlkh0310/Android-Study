@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Factorial</string>
+    <string name="show_less">접기</string>
+    <string name="show_more">더 보기</string>
+</resources>
