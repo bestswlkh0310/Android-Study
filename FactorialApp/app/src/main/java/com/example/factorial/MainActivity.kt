@@ -1,4 +1,4 @@
-package com.example.composepractice
+package com.example.factorial
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
@@ -37,8 +37,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.composepractice.ui.theme.ComposePracticeTheme
-import com.example.composepractice.util.Calculator
+import com.example.factorial.ui.theme.ComposePracticeTheme
+import com.example.factorial.util.Calculator
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

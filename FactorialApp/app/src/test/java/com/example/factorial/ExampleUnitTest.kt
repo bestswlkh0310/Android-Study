@@ -1,4 +1,4 @@
-package com.example.composepractice
+package com.example.factorial
 
 import org.junit.Test
 

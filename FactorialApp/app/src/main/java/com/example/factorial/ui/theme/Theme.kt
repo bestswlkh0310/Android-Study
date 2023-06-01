@@ -1,4 +1,4 @@
-package com.example.composepractice.ui.theme
+package com.example.factorial.ui.theme
 
 import android.app.Activity
 import android.os.Build

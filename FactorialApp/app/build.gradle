@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.composepractice'
+    namespace 'com.example.factorial'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.composepractice"
+        applicationId "com.example.factorial"
         minSdk 26
         targetSdk 33
         versionCode 1

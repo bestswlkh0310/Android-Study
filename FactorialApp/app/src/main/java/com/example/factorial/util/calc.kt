@@ -1,4 +1,4 @@
-package com.example.composepractice.util
+package com.example.factorial.util
 
 import java.math.BigInteger
 
