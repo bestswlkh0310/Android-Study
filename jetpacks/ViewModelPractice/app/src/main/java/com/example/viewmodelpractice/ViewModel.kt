@@ -9,4 +9,4 @@ class ViewModel: ViewModel() {
     fun addCount() {
         count.value = count.value!! + 1
     }
-}
+} 
