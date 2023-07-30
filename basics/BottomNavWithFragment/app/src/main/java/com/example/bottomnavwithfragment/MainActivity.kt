@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val TAG: String = "로그"
     }
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
